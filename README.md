@@ -9,7 +9,7 @@ computes local max/min values, and merges results with just two comparisons per 
  performance-critical systems, and resource-constrained applications.**
 
 ## Structure
-This repository consists of a single **Go** file: `main.go`.
+This repository consists of a single **Go** file: `GOMaxMinSelect.go`.
 
 ## How to Run
 Ensure **Go** is installed on your machine, then execute:
@@ -19,31 +19,46 @@ go run GOMaxMinSelect.go
 ```
 
 ## Cyclomatic Complexity
-Using 𝑀 = 𝐸 − 𝑁 + 2𝑃, with:
-- 𝐸 = 14 (edges)
-- 𝑁 = 13 (nodes)
-- 𝑃 = 1 (connected components)
+Using the formula 𝑀 = 𝐸 − 𝑁 + 2𝑃, with:
+- **𝐸** (edges) = 14
+- **𝑁** (nodes) = 13
+- **𝑃** (connected components) = 1
 
-Result: **Cyclomatic Complexity = 3**
+The **cyclomatic complexity** of the Max-Min algorithm is **3**.
 
-## Asymptotic Complexity
+## Asymptotic Complexity Analysis: Operation Counting Method
 
-- **Best / Worst / Average Case**: **O(n)**
-- **Space Complexity**: **O(log n)** (due to recursion stack)
+### Algorithm Overview
+The algorithm finds the maximum and minimum elements by recursively dividing the array and combining results efficiently.
+
+### Recursive Division Strategy
+* **Input Size Reduction**: Array divided into two equal (or nearly equal) halves
+* **Division Cost**: Constant time O(1)
+
+### Comparison Breakdown
+
+#### Base Cases
+* **Single Element**: 0 comparisons
+* **Two Elements**: 1 comparison to determine max and min
+
+#### Recursive Case (n > 2)
+* Divide array into two halves
+* Recursively find max and min in each half
+* Combine results with 2 comparisons
 
 ### Recurrence Relation
-**C(n) = 2C(n/2) + 2**
-- Base cases:
-  - C(2) = 1
-  - C(1) = 0
+```
+C(n) = 2 * C(n/2) + 2, for n > 2
+C(2) = 1
+C(1) = 0
+```
 
-### Master Theorem Application
-T(n) = 2T(n/2) + O(1)
-### Parameters
-- a = 2
-- b = 2
-- d = 0
-- log₂(2) = 1
-- Since d < log_b(a), falls under **Case 1**
+### Detailed Comparison Analysis
 
-**Time Complexity: O(n)**
+#### Comparison Counting
+* Each recursive level contributes a constant number of comparisons
+* Number of levels is log₂(n)
+* Comparisons at each level remain constant (2 per subproblem)
+
+### Complexity Conclusion
+* **Time Complexity**: O(n)
