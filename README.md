@@ -9,7 +9,7 @@ computes local max/min values, and merges results with just two comparisons per 
  performance-critical systems, and resource-constrained applications.**
  
 ## Structure  
-This repository consists of a single **Go** file: `main.go`.  
+This repository consists of a single **Go** file: `GOMaxMinSelect.go`.  
 
 ## How to Run  
 Ensure **Go** is installed on your machine, then execute:  
